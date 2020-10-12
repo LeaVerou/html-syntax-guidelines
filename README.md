@@ -26,6 +26,7 @@ Other (generally higher level) guidelines for writing custom elements:
 ### Values
 
 - Avoid mixing languages. No JSON or JS in attributes.
+	- Exception: [Event handler attributes](https://w3ctag.github.io/design-principles/#always-add-event-handlers)
 - Avoid HTML in attributes. HTML should be element content, not attribute content.
 	- Unlike: `iframe[srcdoc]`
 	- Would formatting be useful? Use a child element of a specific type
