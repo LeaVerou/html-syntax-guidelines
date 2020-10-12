@@ -20,7 +20,7 @@ Other (generally higher level) guidelines for writing custom elements:
 - Use all lowercase in docs. 
 - No camelCase, no hyphens, no underscores.
 - Prefer nouns
-- Prefer single words (after the hyphen in custom elements). Two words are more rare but there is precedent. Avoid names of three words or more.
+- Prefer single words. Two words are more rare but there is precedent. Avoid names of three words or more.
 - Avoid abbreviations to save only a few characters. 
 	- E.g. it's `<video>`, not `<vid>`, `<source>` not `<src>`
 	- Many older element names are abbreviated. At the time, saving characters was very important, but these days readability is a bigger focus
@@ -81,6 +81,7 @@ Other (generally higher level) guidelines for writing custom elements:
 ## Elements
  
 - Naming
+	- Prefer single words (after the hyphen in custom elements)
 	- Prefer nouns or adjectives, avoid verbs
 		- Built-in nouns: `<label>`, `<table>`, `<source>`, `<picture>`, `<template>`, `<input>`, `<output>`, `<option>`, `<article>`, `<img>`, `<dfn>`, `<code>`
 		- Bult-in adjectives: `<small>`, `<big>`
