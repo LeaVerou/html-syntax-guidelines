@@ -102,10 +102,10 @@ Other (generally higher level) guidelines for writing custom elements:
 
 - Naming
 	- One or two words, joined 
-		- Like: input, change, blur, error, beforeunload, hashchange
-		- Unlike: DOMContentLoaded, SVGScroll
-	- No abbreviations
-		- Unlike: DOMAttrModified
+		- Like: `input`, `change`, `blur`, `error`, `beforeunload`, `hashchange`
+		- Unlike: `DOMContentLoaded`, `SVGScroll`
+	- Avoid abbreviations
+		- Unlike: `DOMAttrModified`
 	- General format: `[ before | after ]? <noun>? <verb> [start | end]?`
 	- Use present tense for verbs
 		- Like: `change`, `input`, `open`, `load`
