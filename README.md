@@ -56,9 +56,9 @@ Other (generally higher level) guidelines for writing custom elements:
 - Reference to other element
 	- Many different patterns here:
 		- HTML tends to use ID refs 
-			- Like: input[list], label[for]
+			- Like: `input[list]`, `label[for]`
 			- That is painful, especially in repeated structures where it forces tooling for id generation.
-			- Perhaps the <label> model is best: id ref works, but nesting of a certain element type also works. However, this is not always feasible.
+			- Perhaps the `<label>` model is best: id ref works, but nesting of a certain element type also works. However, this is not always feasible.
 		- SVG uses `#id`, which at least is extensible to selectors in general
 		- No precedent for relative selectors (e.g. "the element with the class .foo that is after the current element"). Perhaps [`:scope`](https://drafts.csswg.org/selectors-4/#the-scope-pseudo) or [`&`](https://drafts.csswg.org/css-nesting-1/#direct) could be used (without `@nest`).
 	- Avoid references to other elements when not necessary. E.g. it's best for an element to manage its own state than a parent element pointing to it. 
@@ -68,7 +68,7 @@ Other (generally higher level) guidelines for writing custom elements:
 - Color
 	- Are you absolutely sure this is not presentational? Most HTML attributes that take colors as values are deprecated.
 	- The only non-deprecated precedent in HTML is `input[type=color][value]` which accepts hex colors, but there are discussions to expand this, as it limits it to sRGB.
-	- Accepting any CSS <color> value seems the way to go.
+	- Accepting any CSS `<color>` value seems the way to go.
 - URL
 	- `href` or `src` attribute with URL as its value
 		- Unlike: `object[data]`
