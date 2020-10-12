@@ -29,7 +29,7 @@ Other (generally higher level) guidelines for writing custom elements:
 - Avoid HTML in attributes. HTML should be element content, not attribute content.
 	- Unlike: `iframe[srcdoc]`
 	- Would formatting be useful? Use a child element of a specific type
-		- Like: `<caption>` inside `<table>`, `<figcaption>` inside `<figure>`
+		- Like: `figure > figcaption`, `table > caption`, `details > summary`
 
 ### By type
 
@@ -77,15 +77,21 @@ Other (generally higher level) guidelines for writing custom elements:
 ## Elements
  
 - Naming
-	- Prefer nouns, avoid verbs
+	- Prefer nouns or adjectives, avoid verbs
+		- Built-in nouns: `<label>`, `<table>`, `<source>`, `<picture>`, `<template>`, `<input>`, `<output>`, `<option>`, `<article>`, `<img>`, `<dfn>`, `<code>`
+		- Bult-in adjectives: `<small>`, `<big>`
+		- Built-in verbs: `<embed>`, `<select>`
 	- See also [W3C TAG naming principles](https://w3ctag.github.io/design-principles/#naming-is-hard)
-- Only use specific element types for specifying specific pieces of data, otherwise handle any child 
-	- Like: `<figure>` and `<figcaption>`
-	- Parent needs to be able to communicate state summary without having to traverse children
+- Use specific element types for specifying specific pieces of data (think attributes with structure/formatting), otherwise handle any child 
+	- Like: `figure > figcaption`, `table > caption`, `details > summary`
+	- If that piece of data is required and the child is not present, generate a sensible default
+		- Like `details > summary`
+- Parent needs to be able to communicate state summary without having to traverse children
 		- Like: `HTMLSelectElement#value`
-- Update the DOM when properties change, to enable attribute selectors
-	- Like: `<details>`
-	- Unlike: `<input>`, `<select>`
+- Update the DOM when properties change, to enable attribute selectors and easier debugging
+	- Like: `details[open]`
+	- Unlike: `input[value]`, `option[selected]`
+- List of all built-in element names: https://codepen.io/leaverou/pen/abZvbor?editors=0110
 
 ## Events
 
@@ -94,12 +100,13 @@ Other (generally higher level) guidelines for writing custom elements:
 	- Unlike: DOMContentLoaded, SVGScroll
 - No abbreviations
 	- Unlike: DOMAttrModified
-- Format `[ before | after ]? <noun>? <verb> [start | end]?`
+- General format: `[ before | after ]? <noun>? <verb> [start | end]?`
 - Use present tense for verbs
 	- Like: `change`, `input`, `open`, `load`
 	- Unlike: `appinstalled`, `connected`
 - Use standard events where applicable, e.g. `blur` instead of `slBlur`
 - See also [W3C TAG Design Principles on Event Design](https://w3ctag.github.io/design-principles/#event-design)
+- List of all built-in events: https://codepen.io/leaverou/pen/yLJNmxJ?editors=0110
 
 ## Methods
 
