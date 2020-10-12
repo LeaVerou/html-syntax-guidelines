@@ -1,6 +1,7 @@
 # HTML syntax guidelines
 
 This is a draft, WIP document aiming to collect the various de facto design decisions that permeate the syntax of modern HTML elements and their APIs.
+It is primarily aimed at custom element authors, but hopefully some of these may be more broadly useful.
 
 ## Related Work
 
@@ -13,11 +14,13 @@ Other (generally higher level) guidelines for writing custom elements:
 
 ## Attributes & Properties
 
+- Do not set attributes on the light DOM in the constructor. Use `ElementInternals` for specifying default ARIA roles instead of directly setting ARIA attributes on the element.
+
 ### Naming
 - Use all lowercase in docs. 
 - No camelCase, no hyphens, no underscores.
 - Prefer nouns
-- Prefer single words (after the hyphen in custom elements). Two words are suboptimal but ok. Avoid names of three words or more.
+- Prefer single words (after the hyphen in custom elements). Two words are more rare but there is precedent. Avoid names of three words or more.
 - Avoid abbreviations to save only a few characters. 
 	- E.g. it's `<video>`, not `<vid>`, `<source>` not `<src>`
 	- Many older element names are abbreviated. At the time, saving characters was very important, but these days readability is a bigger focus
@@ -32,11 +35,11 @@ Other (generally higher level) guidelines for writing custom elements:
 	- Would formatting be useful? Use a child element of a specific type
 		- Like: `figure > figcaption`, `table > caption`, `details > summary`
 
-### By type
+### By data type
 
 - Boolean:
 	- Attribute presence is true (regardless of value), attribute omission is false.
-		- Like: `checked`, `selected`, `disabled`, `required`, `ol[reversed]`, `script[async]`
+		- Like: `checked`, `selected`, `disabled`, `required`, `ol[reversed]`, `script[async]`, `details[open]`
 		- Like `<audio>`/`<video>` `loop`, `controls`, `autoplay`
 		- Unlike: ARIA boolean attributes
 	- As a side effect, attributes need to be designed such that the default is always false.
@@ -86,7 +89,8 @@ Other (generally higher level) guidelines for writing custom elements:
 - Use specific element types for specifying specific pieces of data (think attributes with structure/formatting), otherwise handle any child 
 	- Like: `figure > figcaption`, `table > caption`, `details > summary`
 	- If that piece of data is required and the child is not present, generate a sensible default
-		- Like `details > summary`
+		- Like `details > summary`: if `<summary>` is missing, one is generated
+	- Do not require `slot` attributes if they are obvious from the element type
 - Parent needs to be able to communicate state summary without having to traverse children
 		- Like: `HTMLSelectElement#value`
 - Update the DOM when properties change, to enable attribute selectors and easier debugging
