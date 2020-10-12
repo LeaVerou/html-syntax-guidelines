@@ -16,7 +16,8 @@ Other (generally higher level) guidelines for writing custom elements:
 ### Naming
 - Use all lowercase in docs. 
 - No camelCase, no hyphens, no underscores.
-- Single words are preferable, two words ok. Avoid names that are more than 2 words
+- Prefer nouns
+- Prefer single words (after the hyphen in custom elements). Two words are suboptimal but ok. Avoid names of three words or more.
 - Avoid abbreviations to save only a few characters. 
 	- E.g. it's `<video>`, not `<vid>`, `<source>` not `<src>`
 	- Many older element names are abbreviated. At the time, saving characters was very important, but these days readability is a bigger focus
@@ -28,7 +29,7 @@ Other (generally higher level) guidelines for writing custom elements:
 - Avoid HTML in attributes. HTML should be element content, not attribute content.
 	- Unlike: `iframe[srcdoc]`
 	- Would formatting be useful? Use a child element of a specific type
-		- Like: <caption> inside <table>, <figcaption> inside <figure>
+		- Like: `<caption>` inside `<table>`, `<figcaption>` inside `<figure>`
 
 ### By type
 
