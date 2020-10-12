@@ -6,10 +6,10 @@ This is a draft, WIP document aiming to collect the various de facto design deci
 
 Other (generally higher level) guidelines for writing custom elements:
 
-- https://github.com/webcomponents/gold-standard/wiki
-- https://w3ctag.github.io/webcomponents-design-guidelines/#native-html-elements
-- https://developers.google.com/web/fundamentals/web-components/best-practices
-- https://github.com/HelixDesignSystem/helix-ui/wiki/Custom-Elements
+- [Gold Standard](https://github.com/webcomponents/gold-standard/wiki)
+- [W3C TAG Web Components Design Guidelines](https://w3ctag.github.io/webcomponents-design-guidelines/#native-html-elements)
+- [Google WC Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
+- [Helix UI Best Practices](https://github.com/HelixDesignSystem/helix-ui/wiki/Custom-Elements)
 
 ## Attributes & Properties
 
