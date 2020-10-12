@@ -96,15 +96,16 @@ Other (generally higher level) guidelines for writing custom elements:
 
 ## Events
 
-- One or two words, joined 
-	- Like: input, change, blur, error, beforeunload, hashchange
-	- Unlike: DOMContentLoaded, SVGScroll
-- No abbreviations
-	- Unlike: DOMAttrModified
-- General format: `[ before | after ]? <noun>? <verb> [start | end]?`
-- Use present tense for verbs
-	- Like: `change`, `input`, `open`, `load`
-	- Unlike: `appinstalled`, `connected`
+- Naming
+	- One or two words, joined 
+		- Like: input, change, blur, error, beforeunload, hashchange
+		- Unlike: DOMContentLoaded, SVGScroll
+	- No abbreviations
+		- Unlike: DOMAttrModified
+	- General format: `[ before | after ]? <noun>? <verb> [start | end]?`
+	- Use present tense for verbs
+		- Like: `change`, `input`, `open`, `load`
+		- Unlike: `appinstalled`, `connected`
 - Use standard events where applicable, e.g. `blur` instead of `slBlur`
 - See also [W3C TAG Design Principles on Event Design](https://w3ctag.github.io/design-principles/#event-design)
 - List of all built-in events: https://codepen.io/leaverou/pen/yLJNmxJ?editors=0110
