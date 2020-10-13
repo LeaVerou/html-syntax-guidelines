@@ -16,8 +16,30 @@ Other (generally higher level) guidelines for writing custom elements:
 ## Attributes & Properties
 
 - Do not set attributes on the light DOM in the constructor. Use `ElementInternals` for specifying default ARIA roles instead of directly setting ARIA attributes on the element.
+- Reflect all primitive attributes as properties.
+
+### Attribute, child element, JS property, or CSS custom property?
+
+- Avoid mixing languages. No JSON or JS in attributes.
+	- Instead of JS in attributes, use a JS property that accepts a function.
+	- Exception: [Event handler attributes](https://w3ctag.github.io/design-principles/#always-add-event-handlers)
+	- Instead of JSON in attributes:
+		- Link or nest a subtree that provides the same complex structure 
+			- Like: `<datalist>`, `<select>`, `<table>`
+		- Use a JS property to read/write the data as a plain JS object
+			- This seems reasonable, but precedent?
+		- TBD: If you do both, should they be synced up?
+			- Huge performance penalty if they are
+			- Confusing if they aren't
+- Avoid HTML in attributes. HTML should be element content, not attribute content.
+	- Unlike: `iframe[srcdoc]`
+	- Would formatting be useful? Use a child element of a specific type instead of an attribute
+		- Like: `figure > figcaption`, `table > caption`, `fieldset > legend`, `details > summary`
+- Does the attribute affect presentation? If so, consider using a custom property
+	- Problem: No way to react to style changes currently
 
 ### Naming
+
 - Use all lowercase in docs. 
 - No camelCase, no hyphens, no underscores.
 - Prefer nouns
@@ -27,15 +49,8 @@ Other (generally higher level) guidelines for writing custom elements:
 	- Many older element names are abbreviated. At the time, saving characters was very important, but these days readability is a bigger focus
 - For the property reflecting the attribute, use camelCase
 	- E.g. the `tabindex` attribute is reflected by the `tabIndex` property
-
-### Values
-
-- Avoid mixing languages. No JSON or JS in attributes.
-	- Exception: [Event handler attributes](https://w3ctag.github.io/design-principles/#always-add-event-handlers)
-- Avoid HTML in attributes. HTML should be element content, not attribute content.
-	- Unlike: `iframe[srcdoc]`
-	- Would formatting be useful? Use a child element of a specific type
-		- Like: `figure > figcaption`, `table > caption`, `details > summary`
+- Re-use existing names for the same concepts when possible.
+	- E.g. in an accordion component, use an `open` attribute/property instead of e.g. `expanded`
 
 ### By data type
 
