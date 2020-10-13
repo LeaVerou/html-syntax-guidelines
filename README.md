@@ -9,6 +9,7 @@ Other (generally higher level) guidelines for writing custom elements:
 
 - [Gold Standard](https://github.com/webcomponents/gold-standard/wiki)
 - [W3C TAG Web Components Design Guidelines](https://w3ctag.github.io/webcomponents-design-guidelines/#native-html-elements)
+- For naming: [W3C TAG naming principles](https://w3ctag.github.io/design-principles/#naming-is-hard)
 - [Google WC Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
 - [Helix UI Best Practices](https://github.com/HelixDesignSystem/helix-ui/wiki/Custom-Elements)
 
@@ -24,7 +25,8 @@ Other (generally higher level) guidelines for writing custom elements:
 - Avoid abbreviations to save only a few characters. 
 	- E.g. it's `<video>`, not `<vid>`, `<source>` not `<src>`
 	- Many older element names are abbreviated. At the time, saving characters was very important, but these days readability is a bigger focus
-- See also [W3C TAG naming principles](https://w3ctag.github.io/design-principles/#naming-is-hard)
+- For the property reflecting the attribute, use camelCase
+	- E.g. the `tabindex` attribute is reflected by the `tabIndex` property
 
 ### Values
 
@@ -86,7 +88,6 @@ Other (generally higher level) guidelines for writing custom elements:
 		- Built-in nouns: `<label>`, `<table>`, `<source>`, `<picture>`, `<template>`, `<input>`, `<output>`, `<option>`, `<article>`, `<img>`, `<dfn>`, `<code>`
 		- Bult-in adjectives: `<small>`, `<big>`
 		- Built-in verbs: `<embed>`, `<select>`
-	- See also [W3C TAG naming principles](https://w3ctag.github.io/design-principles/#naming-is-hard)
 - Use specific element types for specifying specific pieces of data (think attributes with structure/formatting), otherwise handle any child 
 	- Like: `figure > figcaption`, `table > caption`, `details > summary`
 	- If that piece of data is required and the child is not present, generate a sensible default
