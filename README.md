@@ -41,12 +41,15 @@ Other (generally higher level) guidelines for writing custom elements:
 ### Naming
 
 - Use all lowercase in docs. 
-- No camelCase, no hyphens, no underscores.
 - Prefer nouns
 - Prefer single words. Two words are more rare but there is precedent. Avoid names of three words or more.
-- Avoid abbreviations to save only a few characters. 
+	- If using multiple words, concatenate. No camelCase, no hyphens, no underscores.
+		- Examples: `maxlength`, `tabindex`, `datetime`
+- Avoid abbreviations to only save a few characters. 
 	- E.g. it's `<video>`, not `<vid>`, `<source>` not `<src>`
 	- Many older element names are abbreviated. At the time, saving characters was very important, but these days readability is a bigger focus
+	- TBD: Are inline elements an exception to this? Is it because keeping them short interferes less with text readability?
+		- Like: `<em>`, `<sub>`, `<ins>`, `<b>`, `<i>` etc
 - For the property reflecting the attribute, use camelCase
 	- E.g. the `tabindex` attribute is reflected by the `tabIndex` property
 - Re-use existing names for the same concepts when possible.
@@ -90,10 +93,17 @@ Other (generally higher level) guidelines for writing custom elements:
 	- The only non-deprecated precedent in HTML is `input[type=color][value]` which accepts hex colors, but there are discussions to expand this, as it limits it to sRGB.
 	- Accepting any CSS `<color>` value seems the way to go.
 - URL
-	- `href` or `src` attribute with URL as its value
+	- If the attribute is central to the element, `href` or `src` with URL as its value
 		- Unlike: `object[data]`
+		- Historically, `href` is for linking and `src` for embedding, though the difference can be murky
+	- Relative URLs should be relative to the current document
+	- The properties reflecting these attributes should return a `URL` object
+		- Precedent: `<a>` includes properties that effectively mirror those of `URL`, but `URL` did not exist at the time.
+		- Other HTML elements (e.g. `<iframe>`) just return the absolute URL as a string from the property, but returning a `URL` does that anyway when coerced to a string, and is far more flexible.
 - Dates, times, durations
 	- Use the [same format as `time[datetime]`](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-time-element)
+	- TBD: Should the property return a `Date` or reflect the string? 
+		- Precedent: `<input type=date>` has separate `valueAsDate` and `valueAsNumber` properties. `<time>` seems to have nothing, it just reflects the attribute as a string.
 
 ## Elements
  
@@ -118,7 +128,7 @@ Other (generally higher level) guidelines for writing custom elements:
 ## Events
 
 - Naming
-	- One or two words, joined 
+	- One or two words, concatenated 
 		- Like: `input`, `change`, `blur`, `error`, `beforeunload`, `hashchange`
 		- Unlike: `DOMContentLoaded`, `SVGScroll`
 	- Avoid abbreviations
