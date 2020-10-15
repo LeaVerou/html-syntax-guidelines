@@ -12,6 +12,7 @@ Other (generally higher level) guidelines for writing custom elements:
 - For naming: [W3C TAG naming principles](https://w3ctag.github.io/design-principles/#naming-is-hard)
 - [Google WC Best Practices](https://developers.google.com/web/fundamentals/web-components/best-practices)
 - [Helix UI Best Practices](https://github.com/HelixDesignSystem/helix-ui/wiki/Custom-Elements)
+- [Domenic comment on light DOM vs shadow DOM for children](https://github.com/w3c/csswg-drafts/issues/3431#issuecomment-453130662)
 
 ## Attributes & Properties
 
