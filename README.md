@@ -21,6 +21,9 @@ Other (generally higher level) guidelines for writing custom elements:
 
 ### Attribute, child element, JS property, or CSS custom property?
 
+- As a general rule of thumb, if the text is going to be presented in the UI, opt towards a child element. Child elements can have HTML, as well as i18n attributes (`dir`, `lang` etc).
+	- Like: `<caption>`, `<figcaption>`, `<title>` in SVG, `<desc>` in SVG
+	- Unlike: `img[src]`, `[title]`, `input[placeholder]`
 - Avoid mixing languages. No JSON or JS in attributes.
 	- Instead of JS in attributes, use a JS property that accepts a function.
 	- Exception: [Event handler attributes](https://w3ctag.github.io/design-principles/#always-add-event-handlers)
